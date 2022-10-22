@@ -11,3 +11,18 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+*{
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+body{
+  overflow-y: hidden;
+  background: rgb(1, 1, 1);
+}
+.App{
+  overflow-y: scroll;
+  height: 100vh;
+  width:100vw;
+  padding: 20px 50px;
+}

@@ -1,24 +1,34 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useRef } from 'react';
+import { Filters } from './components/Filters';
+import { Preloader } from './components/Preloader';
+import { Search } from './components/Search/index';
+import { useAppDispatch, useAppSelector } from './hooks/redux';
+import './index.css';
+import { MainPage } from './pages/MainPage/MainPage';
+import { fetchNewFilms } from './redux/reducers/FilmsSlice';
 
 function App() {
+  const appRef = useRef<HTMLDivElement>(null)
+  const enableCall = useRef<boolean>(true)
+  const dispatch = useAppDispatch()
+  const scrollHandler = (e: any) => {
+    if(!enableCall.current){
+      return
+    }
+    console.log(appRef.current !== null && appRef.current.scrollHeight - e.target.scrollTop)
+    if(appRef.current !== null && appRef.current.scrollHeight - e.target.scrollTop < 1000){
+      dispatch(fetchNewFilms())
+    }
+    enableCall.current = false
+    setTimeout(() => {
+      enableCall.current = true
+    },200)
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div ref={appRef} onScroll={scrollHandler} className="App">
+      <Search/>
+      <MainPage/>
     </div>
   );
 }

@@ -1,0 +1,10 @@
+.container{
+  color: white;
+  display: block;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+.toggleText{
+  font-size: 20px;
+}
