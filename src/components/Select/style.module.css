@@ -1,0 +1,30 @@
+.container{
+  position: relative;
+  color: white;
+}
+.title{
+  font-size: 18px;
+}
+.activator{
+  border: 1px solid white;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+  margin-top: 5px;
+}
+.select{
+  position: absolute;
+  top: 70px;
+  left: 0px;
+  width: 100%;
+  border: 1px solid white;
+  border-radius: 5px;
+  background-color: black;
+}
+.item{
+  padding: 10px;
+  cursor: pointer;
+}
+.item:hover{
+  background-color: rgb(88, 88, 88);
+}

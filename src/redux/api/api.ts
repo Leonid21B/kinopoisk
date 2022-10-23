@@ -14,7 +14,7 @@ export const API = {
     let resFilters = []
     console.log(filters)
     for(let it in filters){
-      if((it === 'genres' || it === 'countries' || it === 'page' || it === 'keyword' ) && filters[it]?.length){
+      if(it in filters && filters[it]?.length){
         resFilters.push([it,filters[it].join(',')])
       }
     }

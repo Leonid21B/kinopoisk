@@ -9,6 +9,7 @@ const initialState:FlimsState = {
     genres:[],
     countries:[],
     keyword:[],
+    order:['RATING'],
   },
   isFetchFilms:false,
   isFetchNewFilms:false,
@@ -25,9 +26,6 @@ export const fetchFilms = createAsyncThunk(
   'films/getFilms',
   async(_,thunkApi) => {
     const state = thunkApi.getState() as any
-    if(state.films.isFetchFilms){
-      return
-    }
     thunkApi.dispatch(filmsSlice.actions.incrementPage(true))  
     thunkApi.dispatch(filmsSlice.actions.startLoading(true))
     console.log(11111)
@@ -95,9 +93,7 @@ export const filmsSlice = createSlice({
       
     },
     setFilter(state,action:PayloadAction<FilterModel>){
-      if(action.payload.name === 'genres' || action.payload.name === 'countries' || action.payload.name === 'keyword'){
-        state.filters[action.payload.name] = [action.payload.value]
-      }
+      state.filters[action.payload.name] = [action.payload.value]
     }
 
   },

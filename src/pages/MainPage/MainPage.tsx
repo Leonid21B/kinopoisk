@@ -6,6 +6,7 @@ import { useAppDispatch, useAppSelector } from "../../hooks/redux";
 import { fetchFilms} from "../../redux/reducers/FilmsSlice";
 import { getAllFilmsSelector } from "../../redux/selectors/FilmsSelector";
 import style from "./MainPage.module.css"
+import { Sort } from "./Sort/Sort";
 
 type GenreType = {
   genre:string,
@@ -27,7 +28,10 @@ export const MainPage = () => {
           <div  className={style.cardsContainer}>
             {films?.map(film => <FilmCard countries={film.countries} key={film.kinopoiskId} imageUrl={film.posterUrl} title={film.nameRu} description={film.type} genre={film.genres.map((item:GenreType) => item.genre).join(', ')}/>)}
           </div>}
-        <Filters/>
+        <div className="">
+          <Sort/>
+          <Filters/>
+        </div>
       </div>
       {isFetchNewFilms && !isFetchFilms && <Preloader/>}
     </>

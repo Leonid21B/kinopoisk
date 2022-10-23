@@ -6,6 +6,8 @@ export interface FiltersType{
   genres:Array<string> ,
   countries:Array<string>,
   keyword:Array<string>,
+  order:Array<string>,
+  [key:string]:Array<string>
 }
 export interface FlimsState{
   page:number,

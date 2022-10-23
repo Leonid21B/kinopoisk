@@ -1,9 +1,13 @@
-export const debounce = (fn:() => void,ms:number) => {
-  let timeout = setTimeout(() => {},0)
-  return function(val:string){
-    const fnCall = () => {
-      fn()}
-    clearTimeout(timeout)
-    timeout = setTimeout(fnCall,ms)
-  }
+import { useEffect, useRef } from "react"
+import { debounce } from "../functions/debouce"
+import { useAppDispatch } from "./redux"
+
+
+export const useChangeDebounce = (callBack:() => void,ms:number) => {
+  const dispatch = useAppDispatch()
+  const changeDebounce = useRef<(value:string) => void>()
+  useEffect(() => {
+    changeDebounce.current = debounce(callBack, ms)
+  },[])
+  return changeDebounce
 }
