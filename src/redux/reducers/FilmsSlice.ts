@@ -28,9 +28,7 @@ export const fetchFilms = createAsyncThunk(
     const state = thunkApi.getState() as any
     thunkApi.dispatch(filmsSlice.actions.incrementPage(true))  
     thunkApi.dispatch(filmsSlice.actions.startLoading(true))
-    console.log(11111)
     const resp = await API.getFilms({...state.films.filters,page:['1']}).then(res => res.data)
-    console.log(resp)
     return resp?.items ? resp.items : []
   }
 )
@@ -47,7 +45,6 @@ export const fetchNewFilms = createAsyncThunk(
     const resp = API.getFilms({...state.films.filters,page:[(1 +state.films.page).toString()]})
     const items = await Promise.race([resp,racePromise(10000)]).then((res:any) => res.data.items)
     if(items.length !== 0 ) thunkApi.dispatch(filmsSlice.actions.incrementPage())
-    console.log(items)
     return items
   }
 )

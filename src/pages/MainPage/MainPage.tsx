@@ -1,24 +1,34 @@
-import React, { useEffect } from "react";
+import React, { useEffect,useRef } from "react";
 import { FilmCard } from "../../components/FilmCard/index";
 import { Filters } from "../../components/Filters";
 import { Preloader } from "../../components/Preloader";
 import { useAppDispatch, useAppSelector } from "../../hooks/redux";
-import { fetchFilms} from "../../redux/reducers/FilmsSlice";
+import { fetchFilms, filmsSlice} from "../../redux/reducers/FilmsSlice";
 import { getAllFilmsSelector } from "../../redux/selectors/FilmsSelector";
 import style from "./MainPage.module.css"
 import { Sort } from "./Sort/Sort";
+import { useSearchParams } from 'react-router-dom'
 
 type GenreType = {
   genre:string,
 }
 export const MainPage = () => {
-  
+  const [searchParams,setSearchParams] = useSearchParams()
+  const isFirstLoading = useRef(true)
   const dispatch = useAppDispatch()
   const films = useAppSelector(getAllFilmsSelector)
   const {isFetchNewFilms,isFetchFilms} = useAppSelector(state => state.films)
-  console.log(films)
+
   useEffect(() => {
-    dispatch(fetchFilms())
+    if(isFirstLoading.current){
+      searchParams.forEach((item,key) => {
+        dispatch(filmsSlice.actions.setFilter({name:key,value:item}))
+      }) 
+      dispatch(fetchFilms())
+      isFirstLoading.current = false
+    }
+    
+    
   },[])
   return(
     <>

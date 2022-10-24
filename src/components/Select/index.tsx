@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useSearchParams } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../hooks/redux";
 import { useChangeDebounce } from "../../hooks/useDebounceDispatch";
 import { fetchFilms, filmsSlice } from "../../redux/reducers/FilmsSlice";
@@ -18,12 +19,9 @@ interface SelectProps{
 
 export const Select = ({title,items,action}:SelectProps) => {
   const [active,setActive]  = useState(false)
-  const debounce = useChangeDebounce(() => dispatch(fetchFilms()),500)
-  const dispatch = useAppDispatch()
   const choiceHandler = (value:string) => {
     setActive(false)
-    dispatch(filmsSlice.actions.setFilter({name:'order',value}))
-    if(debounce?.current) debounce.current('12')
+    action(value)
   }
   const activeItem = useAppSelector(getSortSelector(items))
   

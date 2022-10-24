@@ -12,7 +12,6 @@ const base = axios.create({
 export const API = {
   getFilms(filters:FiltersType & {page:string[]}){
     let resFilters = []
-    console.log(filters)
     for(let it in filters){
       if(it in filters && filters[it]?.length){
         resFilters.push([it,filters[it].join(',')])

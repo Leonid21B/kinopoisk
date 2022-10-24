@@ -1,4 +1,7 @@
 import React, { useRef } from 'react';
+import { Route} from 'react-router';
+import { Routes } from 'react-router';
+import { Navigate } from 'react-router-dom';
 import { Filters } from './components/Filters';
 import { Preloader } from './components/Preloader';
 import { Search } from './components/Search/index';
@@ -15,7 +18,6 @@ function App() {
     if(!enableCall.current){
       return
     }
-    console.log(appRef.current !== null && appRef.current.scrollHeight - e.target.scrollTop)
     if(appRef.current !== null && appRef.current.scrollHeight - e.target.scrollTop < 1000){
       dispatch(fetchNewFilms())
     }
@@ -26,10 +28,18 @@ function App() {
   }
 
   return (
-    <div ref={appRef} onScroll={scrollHandler} className="App">
-      <Search/>
-      <MainPage/>
-    </div>
+    
+      <div ref={appRef} onScroll={scrollHandler} className="App">
+        <Routes>
+          <Route  path='/' element={(
+            <>
+              <Search/>
+              <MainPage/>
+            </>
+          )} />
+          <Route path='*' element={(<Navigate replace to={'../'}/>)}/>
+        </Routes>
+      </div>
   );
 }
 
