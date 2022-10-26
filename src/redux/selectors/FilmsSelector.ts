@@ -20,3 +20,5 @@ export const getSortSelector = (items:Array<ItemsType>) => {
     return items.find(it => it.value === filters.order[0])?.visible
   })
 }
+
+export const getSearchValueSelector = (state:RootState) => state.films.filters.keyword

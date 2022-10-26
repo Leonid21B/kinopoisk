@@ -21,5 +21,9 @@ export const API = {
     return base.get('',{
       params
     })
+  },
+  getCurrentFilm(id:string){
+    return base.get(`/${id}`)
   }
+
 }

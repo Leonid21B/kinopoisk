@@ -3,23 +3,15 @@ import { useSearchParams } from "react-router-dom";
 import { Select } from "../../../components/Select";
 import { useAppDispatch } from "../../../hooks/redux";
 import { useChangeDebounce } from "../../../hooks/useDebounceDispatch";
+import { useToggleSearchParams } from "../../../hooks/useToggleSearchParams";
 import { fetchFilms, filmsSlice } from "../../../redux/reducers/FilmsSlice";
-type ParamsType ={
-  [key:string]: string,
-}
+
 export const Sort = () => {
-  const [searchParams,setSearchParams] = useSearchParams()
   const debounce = useChangeDebounce(() => dispatch(fetchFilms()),500)
   const dispatch = useAppDispatch()
+  const {setParams} = useToggleSearchParams()
   const choiceHandler = (value:string) => {
-    setSearchParams((prev) => {
-        let newParams:ParamsType = {}
-        prev.forEach((value,key) => {
-          newParams[key] = value
-        })
-        newParams['order'] = value
-        return newParams
-      })
+    setParams('order',value)
     dispatch(filmsSlice.actions.setFilter({name:'order',value}))
     if(debounce?.current) debounce.current('12')
   }

@@ -1,0 +1,22 @@
+.image{
+  width: 100%;
+}
+
+.poster{
+  max-height: 500px;
+  overflow-y: auto;
+  cursor: pointer;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.poster::-webkit-scrollbar{
+  -ms-overflow-style:none;
+  width: 1px;
+  color: white;
+}
+
+.poster:hover::-webkit-scrollbar-thumb {
+  background:white;
+  border-radius: 20px; 
+  width: 1px;
+}

@@ -30,7 +30,7 @@ export const Select = ({title,items,action}:SelectProps) => {
       <h1 className={style.title}>{title}:</h1>
       <div onClick={() => setActive(it => !it)} className={style.activator}>{activeItem}</div>
       {active && <div className={style.select}>
-        {items.map(item => <p onClick={() => choiceHandler(item.value)} className={style.item}>{item.visible}</p>)}
+        {items.map(item => <p key={item.value} onClick={() => choiceHandler(item.value)} className={style.item}>{item.visible}</p>)}
       </div>}
     </div>
   )

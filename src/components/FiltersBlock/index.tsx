@@ -1,16 +1,11 @@
 import React from 'react'
-import {useRef,useEffect} from 'react'
 import { useAppDispatch } from '../../hooks/redux'
 import { useChangeDebounce } from '../../hooks/useDebounceDispatch'
-import { debounce } from '../../functions/debouce'
 import { fetchFilms, filmsSlice } from '../../redux/reducers/FilmsSlice'
-import { Toggle } from '../Toggle'
+import { Toggle } from '@components/Toggle'
 import style from './style.module.css'
-import { useSearchParams } from 'react-router-dom'
+import { useToggleSearchParams } from '../../hooks/useToggleSearchParams'
 
-type ParamsType ={
-  [key:string]: string,
-}
 type ItemsType = {
   value:string,
   visible:string,
@@ -24,24 +19,12 @@ interface FiltersBlockProps{
 
 export const FiltersBlock = ({title,name,items}: FiltersBlockProps) => {
   const dispatch = useAppDispatch()
-  const [searchParams,setSearchParams] = useSearchParams()
+  const {setParams} = useToggleSearchParams()
   const changeDebounce = useChangeDebounce(() => dispatch(fetchFilms()),1000)
   const toggleFilter = (name:string) => {
     return function(value:string){
       dispatch(filmsSlice.actions.toggleFilter({name,value}))
-      setSearchParams((prev) => {
-        let newParams:ParamsType = {}
-        prev.forEach((value,key) => {
-          newParams[key] = value
-        })
-        if(prev.get(name) === value){
-          delete newParams[name]
-        }else{
-          newParams[name] = value
-        }
-        
-        return newParams
-      })
+      setParams(name,value)
       if(changeDebounce.current !== undefined) changeDebounce.current(value)
     }
   }

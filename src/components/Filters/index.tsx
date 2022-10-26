@@ -1,5 +1,5 @@
 import React from 'react'
-import { FiltersBlock } from '../FiltersBlock'
+import { FiltersBlock } from '@components/FiltersBlock'
 import style from './style.module.css'
 
 const itemsGenres = [

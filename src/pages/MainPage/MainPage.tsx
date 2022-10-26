@@ -1,7 +1,7 @@
 import React, { useEffect,useRef } from "react";
-import { FilmCard } from "../../components/FilmCard/index";
-import { Filters } from "../../components/Filters";
-import { Preloader } from "../../components/Preloader";
+import { FilmCard } from "@components/FilmCard";
+import { Filters } from "@components/Filters";
+import { Preloader } from "@components/Preloader";
 import { useAppDispatch, useAppSelector } from "../../hooks/redux";
 import { fetchFilms, filmsSlice} from "../../redux/reducers/FilmsSlice";
 import { getAllFilmsSelector } from "../../redux/selectors/FilmsSelector";
@@ -36,7 +36,7 @@ export const MainPage = () => {
         {isFetchFilms? 
           <Preloader/> :
           <div  className={style.cardsContainer}>
-            {films?.map(film => <FilmCard countries={film.countries} key={film.kinopoiskId} imageUrl={film.posterUrl} title={film.nameRu} description={film.type} genre={film.genres.map((item:GenreType) => item.genre).join(', ')}/>)}
+            {films?.map(film => <FilmCard id={film.kinopoiskId} countries={film.countries} key={film.kinopoiskId} imageUrl={film.posterUrl} title={film.nameRu} description={film.type} genre={film.genres.map((item:GenreType) => item.genre).join(', ')}/>)}
           </div>}
         <div className="">
           <Sort/>

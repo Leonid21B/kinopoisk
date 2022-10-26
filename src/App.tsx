@@ -1,12 +1,10 @@
 import React, { useRef } from 'react';
-import { Route} from 'react-router';
-import { Routes } from 'react-router';
+import { Route,Routes} from 'react-router';
 import { Navigate } from 'react-router-dom';
-import { Filters } from './components/Filters';
-import { Preloader } from './components/Preloader';
 import { Search } from './components/Search/index';
 import { useAppDispatch, useAppSelector } from './hooks/redux';
 import './index.css';
+import { Film } from './pages/Film/Film';
 import { MainPage } from './pages/MainPage/MainPage';
 import { fetchNewFilms } from './redux/reducers/FilmsSlice';
 
@@ -31,6 +29,7 @@ function App() {
     
       <div ref={appRef} onScroll={scrollHandler} className="App">
         <Routes>
+          <Route path='/:filmId' element={<Film/>}/>
           <Route  path='/' element={(
             <>
               <Search/>
