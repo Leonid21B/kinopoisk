@@ -5,6 +5,7 @@ import { fetchFilm } from "../../redux/reducers/CurrentFilmSlice";
 import { getCurrentFilmSelector } from "../../redux/selectors/CurrentFilmSelector";
 import style from './Film.module.css'
 import { LeftFilm } from "./LeftFilm/LeftFilm";
+import { RightFilms } from "./RightFilm/RightFilms";
 
 export const Film = () => {
   const dispatch = useAppDispatch()
@@ -17,6 +18,7 @@ export const Film = () => {
   return(
     <div className={style.container}>
       <LeftFilm imageUrl={filmData.posterUrl}/>
+      <RightFilms year={filmData.year} slogan={filmData.slogan} genres={filmData.genres} description={filmData.description} title={filmData.nameRu} rating={filmData.ratingKinopoisk}/>
     </div>
   )
 }
