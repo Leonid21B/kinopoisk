@@ -9,4 +9,5 @@ export interface CurrentFilmType{
   countries:Array<{country:string}>,
   genres:Array<{genre:string}>,
   ratingAgeLimits:string,
+  type:string,
 }

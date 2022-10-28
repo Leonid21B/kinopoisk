@@ -1,6 +1,7 @@
 import React from "react";
 import style from './RightFilms.module.css'
 
+
 interface RightFilmsProps{
   title:string,
   rating:number,
@@ -8,9 +9,11 @@ interface RightFilmsProps{
   genres:Array<{genre:string}>,
   slogan:string,
   year:number,
+  age:string,
+  type:string,
 }
 
-export const RightFilms = ({year,title,rating,description,genres,slogan}:RightFilmsProps) => {
+export const RightFilms = ({type,age,year,title,rating,description,genres,slogan}:RightFilmsProps) => {
   return(
     <div className={style.container}>
       <h1 className={style.title}>{title}
@@ -23,6 +26,11 @@ export const RightFilms = ({year,title,rating,description,genres,slogan}:RightFi
       <h2 className={style.slogan}>{slogan}</h2>
       <h3 className={style.genres}>Жанр: {genres.map(item => item.genre).join(', ')}</h3>
       <h3 className={style.year}>Год: {year}</h3>
+      <div className={style.centerBlock}>
+        <div className={style.type}>{type}</div>
+        <div className={style.age}>{age}+</div>
+      </div>
+
       <div className={style.description}>
         <h3>Описание:</h3>
         <p>{description}</p>

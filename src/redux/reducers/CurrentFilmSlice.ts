@@ -13,6 +13,7 @@ const initialState = {
     countries:[],
     genres:[],
     ratingAgeLimits:'age18',
+    type:'',
   },
   isLoading:false,
 }
