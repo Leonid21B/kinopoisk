@@ -29,14 +29,14 @@ function App() {
     
       <div ref={appRef} onScroll={scrollHandler} className="App">
         <Routes>
-          <Route path='/:filmId' element={<Film/>}/>
-          <Route  path='/' element={(
+          <Route path='/kinopoisk/:filmId' element={<Film/>}/>
+          <Route  path='/kinopoisk/' element={(
             <>
               <Search/>
               <MainPage/>
             </>
           )} />
-          <Route path='*' element={(<Navigate replace to={'../'}/>)}/>
+          <Route path='*' element={(<Navigate replace to={'../kinopoisk'}/>)}/>
         </Routes>
       </div>
   );
