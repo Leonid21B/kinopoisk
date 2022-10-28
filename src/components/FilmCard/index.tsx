@@ -13,7 +13,7 @@ interface FilmCardProps{
 export const FilmCard = ({id,title,description,genre,imageUrl,countries}: FilmCardProps) => {
   const navigate = useNavigate()
   return(
-    <div className={style.body} onClick={() => navigate('/' + id)}>
+    <div className={style.body} onClick={() => navigate(`./${id}`)}>
       <img src={imageUrl} className={style.image} alt="" />
       <div className={style.contentBlock}>
         <h1 className={style.title}>{title}</h1>
