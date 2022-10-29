@@ -18,11 +18,46 @@ code {
 }
 body{
   overflow-y: hidden;
+  overflow-x: hidden;
   background: rgb(1, 1, 1);
 }
 .App{
   overflow-y: scroll;
+  overflow-x: hidden;
   height: 100vh;
   width:100vw;
   padding: 20px 50px;
+}
+.pages{
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+.pages-enter-active {
+  animation: fade-in 1s forwards;
+}
+
+.pages-exit-active {
+  animation: fade-out 1s forwards;
+}
+
+@keyframes fade-in {
+  0%{
+    transform: scale(0);
+    opacity: 0;
+  }
+  100%{
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+@keyframes fade-out {
+  0%{
+    transform: scale(1);
+    opacity: 1;
+  }
+  100%{
+    transform: scale(0);
+    opacity: 0;
+  }
 }
