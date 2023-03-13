@@ -22,3 +22,19 @@
   outline: none;
   background-color:rgb(86, 86, 86);
 }
+
+@media screen and (max-width:730px) {
+  .body{
+    flex-direction: column;
+  }
+  .input{
+    width: 60%;
+    height: 35px;
+    margin-top: 10px;
+  }
+}
+@media screen and (max-width:500px) {
+  .input{
+    width: 100%;
+  }
+}

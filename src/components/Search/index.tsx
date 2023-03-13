@@ -23,7 +23,7 @@ export const Search = () => {
   }
   
   return(
-    <div className={style.body  }>
+    <div className={style.body}>
       <h1 className={style.title}>Поиск</h1>
       <input onChange={inputHandler} placeholder={'Введите название'} value={valueInput} className={style.input}type="text" />
     </div>

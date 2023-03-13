@@ -10,3 +10,30 @@
   grid-template-columns: 5fr 1fr ;
   grid-column-gap: 40px;
 }
+
+@media screen and (max-width:1200px) {
+  .cardsContainer{
+    grid-template-columns: 1fr 1fr 1fr ;
+  }
+}
+@media screen and (max-width:960px) {
+  .cardsContainer{
+    grid-template-columns: 1fr 1fr ;
+  }
+}
+
+@media screen and (max-width:730px) {
+  .cardsContainer{
+    grid-template-columns: 1fr 1fr ;
+  }
+  .body{
+    display: flex;
+    flex-direction: column-reverse;
+  }
+}
+
+@media screen and (max-width:500px) {
+  .cardsContainer{
+    grid-template-columns: 1fr;
+  }
+}

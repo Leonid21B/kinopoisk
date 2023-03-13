@@ -4,7 +4,51 @@
   margin-bottom: 20px;
   margin-top: 20px;
 }
-
+.activateBtn{
+  display:none;
+  border: 1px solid white;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+  margin-top: 5px;
+}
+.closedBtn{
+  display: none;
+}
 .toggleText{
   font-size: 20px;
+}
+
+@media screen and (max-width:730px) {
+  .container{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media screen and (max-width:500px) {
+  .container{
+    display: none;
+    position: fixed;
+    left: 0;
+    top: -20px;
+    background-color: black;
+    width: 100%;
+    padding: 4vw;
+  }
+  .activeFilter{
+    display: block;
+  }
+  .activateBtn{
+    margin: 10px 0 20px 0;
+    display: flex;
+  }
+  .closedBtn{
+    display: flex;
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    right: 4vw;
+    cursor: pointer;
+    top: 4vw;
+  }
 }

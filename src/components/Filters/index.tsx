@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { FiltersBlock } from '@components/FiltersBlock'
 import style from './style.module.css'
+import closeIcon from '../../images/close.svg'
 
 const itemsGenres = [
   {value:'1',visible:'Триллер'}, 
@@ -22,10 +23,15 @@ const itemsCountries= [
 ]
 
 export const Filters = () => {
+  const [activeFilters,setActiveFilters] = useState<boolean>(false)
   return(
-    <div className={style.container}>
-      <FiltersBlock name='genres' title='Жанр' items={itemsGenres}/>
-      <FiltersBlock name='countries' title='Страна' items={itemsCountries}/>
-    </div>
+    <>
+      <div className={`${style.container} ${activeFilters ? style.activeFilter : ''}`}>
+        <FiltersBlock name='genres' title='Жанр' items={itemsGenres}/>
+        <FiltersBlock name='countries' title='Страна' items={itemsCountries}/>
+        <img onClick={() => setActiveFilters(false)} className={style.closedBtn} src={closeIcon} alt="" />
+      </div>
+      <button className={style.activateBtn} onClick={() => setActiveFilters(true)}>Фильтры</button>
+    </>
   )
 }
