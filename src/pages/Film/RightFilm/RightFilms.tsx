@@ -17,7 +17,10 @@ export const RightFilms = ({type,age,year,title,rating,description,genres,slogan
   return(
     <div className={style.container}>
       <h1 className={style.title}>{title}
-        <p>{rating} из 10 
+        <p className={style.rating}>
+          <p className={style.ratingText}>
+            {rating} из 10 
+          </p>
           <p className={style.progress}>
             <p style={{width:`${rating*10}%`}}/>
           </p>
@@ -28,7 +31,7 @@ export const RightFilms = ({type,age,year,title,rating,description,genres,slogan
       <h3 className={style.year}>Год: {year}</h3>
       <div className={style.centerBlock}>
         <div className={style.type}>{type}</div>
-        <div className={style.age}>{age}+</div>
+        <div className={style.age}>{age || 0}+</div>
       </div>
 
       <div className={style.description}>

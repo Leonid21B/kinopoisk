@@ -2,12 +2,15 @@
   color: white;
   font-size: 30px;
   margin-top: 20px;
-  height: 50px;
+  min-height: 50px;
   display: flex;
   justify-content: space-between;
   padding-right: 20px;
   align-items: center;
   border-bottom: 1px solid white;
+}
+.ratingText{
+  width: 70px;
 }
 .container{
   display: flex;
@@ -77,9 +80,33 @@
   justify-content: start;
   align-items: center;
 }
-
+.rating{
+  width: 50px;
+}
 .type{
   color: rgb(130, 130, 130);
   margin-right: 20px;
   font-size: 25px;
+}
+@media screen and (max-width:550px) {
+  .centerBlock{
+    display: block;
+  }
+  .age{
+    margin: 10px 0;
+  }
+  .title{
+    font-size: 20px;
+    display: block;
+    padding-bottom: 20px;
+  }
+  .genres{
+    font-size: 13px;
+  }
+  .year{
+    font-size: 13px;
+  }
+  .description>p{
+    font-size: 12px;
+  }
 }

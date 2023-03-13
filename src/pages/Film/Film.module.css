@@ -19,3 +19,21 @@
 .container>img:hover{
   opacity: 0.5;
 }
+@media screen and (max-width:1000px) {
+  .container{
+    grid-template-columns: 1fr;
+  }
+}
+@media screen and (max-width:550px) {
+  .container{
+      padding: 25px 25px;
+  }
+  .container>img{
+    position: absolute;
+    right: 25px;
+    height: 25px;
+    background-color: black;
+    border-radius: 50%;
+
+  }
+}
