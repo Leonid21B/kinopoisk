@@ -7,7 +7,7 @@ interface FilmCardProps{
   description: string,
   genre: string,
   imageUrl: string,
-  countries: string[],
+  countries: Array<{country:string}>,
   id:number,
 }
 export const FilmCard = ({id,title,description,genre,imageUrl,countries}: FilmCardProps) => {
@@ -18,7 +18,7 @@ export const FilmCard = ({id,title,description,genre,imageUrl,countries}: FilmCa
       <div className={style.contentBlock}>
         <h1 className={style.title}>{title}</h1>
         <h2 className={style.genre}>Жанр: {genre}</h2>
-        <p className={style.description}>Страны: {countries.map((it:any) => it.country).join(', ')}</p>
+        <p className={style.description}>Страны: {countries.map((it) => it.country).join(', ')}</p>
       </div>
     </div>
   )

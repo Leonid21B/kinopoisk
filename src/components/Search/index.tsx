@@ -16,7 +16,7 @@ export const Search = () => {
   const valueInput = useAppSelector(getSearchValueSelector)
   const appDispatch = useAppDispatch()
   const {setParams} = useToggleSearchParams()
-  const inputHandler = (e:any) => {    
+  const inputHandler = (e:React.ChangeEvent<HTMLInputElement>) => {    
     setParams('keyword',e.target.value)
     appDispatch(filmsSlice.actions.setFilter({name: 'keyword',value:e.target.value}))
     if(changeDebounce?.current) changeDebounce.current(e.target.value)

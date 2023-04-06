@@ -1,6 +1,7 @@
 export interface CurrentFilmType{
   nameRu:string,
   posterUrl:string,
+  kinopoiskId:number,
   ratingKinopoisk:number,
   year:number,
   slogan:string,

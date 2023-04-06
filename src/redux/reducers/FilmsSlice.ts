@@ -2,6 +2,7 @@ import { createSlice,PayloadAction,createAsyncThunk } from "@reduxjs/toolkit";
 import { FilterModel, FlimsState } from "../models/FilmsModels";
 import { API } from '../api/api';
 
+
 const initialState:FlimsState = {
   films:[],
   page:1,
@@ -25,7 +26,7 @@ const racePromise = (ms:number) => {
 export const fetchFilms = createAsyncThunk(
   'films/getFilms',
   async(_,thunkApi) => {
-    const state = thunkApi.getState() as any
+    const state = thunkApi.getState() as {films:FlimsState}
     thunkApi.dispatch(filmsSlice.actions.incrementPage(true))  
     thunkApi.dispatch(filmsSlice.actions.startLoading(true))
     const resp = await API.getFilms({...state.films.filters,page:['1']}).then(res => res.data)
@@ -36,7 +37,7 @@ export const fetchFilms = createAsyncThunk(
 export const fetchNewFilms = createAsyncThunk(
   'films/getNewFilms',
   async(_,thunkApi) => {
-    const state = thunkApi.getState() as any
+    const state = thunkApi.getState() as {films:FlimsState}
     if(state.films.isFetchNewFilms){
       return thunkApi.rejectWithValue(12)
       
@@ -49,18 +50,6 @@ export const fetchNewFilms = createAsyncThunk(
   }
 )
 
-/*export const setFilter = createAsyncThunk(
-  'films/setFilter',
-  async(filter:FilterModel,thunkApi) => {
-    const state = thunkApi.getState() as any
-    thunkApi.dispatch(filmsSlice.actions.startNewLoading(true))
-    const resp = API.getFilms([{name: 'page',value: 1},...state.films.filters])
-    thunkApi.dispatch(filmsSlice.actions.incrementPage(true))
-    const items = await Promise.race([resp,racePromise(10000)]).then((res:any) => res.data.items)
-    if(items.length !== 0 ) thunkApi.dispatch(filmsSlice.actions.incrementPage())
-    return items
-  }
-)*/
 export const filmsSlice = createSlice({
   name: 'films',
   initialState: initialState,

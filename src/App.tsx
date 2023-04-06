@@ -25,11 +25,11 @@ function App() {
   const appRef = useRef<HTMLDivElement>(null)
   const enableCall = useRef<boolean>(true)
   const dispatch = useAppDispatch()
-  const scrollHandler = (e: any) => {
+  const scrollHandler = (e:React.UIEvent<HTMLDivElement>) => {
     if(!enableCall.current){
       return
     }
-    if(appRef.current !== null && appRef.current.scrollHeight - e.target.scrollTop < 1000){
+    if(appRef.current !== null && appRef.current.scrollHeight - e.currentTarget.scrollTop < 1000){
       dispatch(fetchNewFilms())
     }
     enableCall.current = false

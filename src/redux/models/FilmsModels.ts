@@ -1,3 +1,4 @@
+import { CurrentFilmType } from './CurrentFilmModels';
 export type FilterModel = {
   name: string,
   value: string
@@ -13,6 +14,6 @@ export interface FlimsState{
   page:number,
   isFetchFilms:boolean,
   isFetchNewFilms:boolean,
-  films:Array<any>,
+  films:Array<CurrentFilmType>,
   filters:FiltersType,
 }

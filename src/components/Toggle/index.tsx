@@ -4,7 +4,7 @@ import { isFilterActiveSelector } from '../../redux/selectors/FilmsSelector'
 import style from './style.module.css'
 
 interface PropsToggle{
-  action:(value:any) => void,
+  action:(value:string) => void,
   name:string,
   value:string,
   children:React.ReactNode,
@@ -13,7 +13,6 @@ interface PropsToggle{
 export const Toggle = ({action,value,name,children}:PropsToggle) => {
   const active = useAppSelector(isFilterActiveSelector(name,value))
   const clickHandler = () => {
-
     action(value)
   }
   return(
